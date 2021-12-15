@@ -12,23 +12,41 @@ namespace ServiceController.Services
 
         public string ServiceName { get => "MonitorService"; }
 
-        public void ProccessService(string serviceData, IILogger logger)
+        public void ProccessService(ServiceItem item, IILogger logger)
         {
             try
             {
                 Ping ping = new Ping();
 
+                var pingAmount = 100;
 
-                PingReply reply = ping.Send(serviceData);
+                var failedPings = 0;
+                var latencySum = 0;
 
-                string logText = $"Address: {serviceData} - RoundTrip: {reply.RoundtripTime} ms - Status: {reply.Status}";
+                for(int i = 1; i < pingAmount; i++)
+                {
+                    PingReply reply = ping.Send(item.ServiceData);
+
+                    if (reply != null)
+                    {
+                        if (reply.Status != IPStatus.Success)
+                            failedPings += 1;
+                        else
+                            latencySum += (int)reply.RoundtripTime;
+                    }
+                }
+
+                var averagePing = (latencySum / (pingAmount - failedPings));
+                var packetLoss = Convert.ToInt32((Convert.ToDouble(failedPings) / Convert.ToDouble(pingAmount)) * 100);
+
+                string logText = $"Address: {item.ServiceData} - Round Trip Average: {averagePing} ms - PackLoss {packetLoss}";
 
                 logger.LogIt(logText);
             }
 
             catch (SystemException ex)
             {
-                string logText = $"Warning: Address: {serviceData} - offline";
+                string logText = $"Warning: Address: {item.ServiceData} - offline";
             }
         }
     }

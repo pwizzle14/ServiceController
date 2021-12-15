@@ -20,14 +20,20 @@ namespace ServiceController
         {
             if(serviceId == 1)
             {
-                var service = new MonitorService();
-                RunService(service, serviceData);
+                RunService(new MonitorService(), serviceData);
             }
         }
 
         private static void RunService(iService service, string serviceData)
         {
-            service.ProccessService(serviceData, new ConsoleLogger());
+            var item = new ServiceItem
+            {
+                ServiceData = serviceData,
+                ServiceId = 1,
+                ServiceStatus = 0
+            };
+
+            service.ProccessService(item, new ConsoleLogger());
             
         }
     }

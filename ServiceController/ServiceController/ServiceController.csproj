@@ -36,6 +36,9 @@
     <Compile Include="Services\MonitorService.cs" />
     <Compile Include="ServiceContorllerCore\iLogger.cs" />
     <Compile Include="ServiceContorllerCore\ConsoleLogger.cs" />
+    <Compile Include="ServiceContorllerCore\ServiceItem.cs" />
+    <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\NoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ServiceContorllerCore\" />
