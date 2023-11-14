@@ -1,0 +1,6 @@
+/Users/dom/Projects/ServiceController/ServiceController/obj/Debug/ServiceController.csprojAssemblyReference.cache
+/Users/dom/Projects/ServiceController/ServiceController/obj/Debug/ServiceController.csproj.CoreCompileInputs.cache
+/Users/dom/Projects/ServiceController/ServiceController/bin/Debug/ServiceController.exe
+/Users/dom/Projects/ServiceController/ServiceController/bin/Debug/ServiceController.pdb
+/Users/dom/Projects/ServiceController/ServiceController/obj/Debug/ServiceController.exe
+/Users/dom/Projects/ServiceController/ServiceController/obj/Debug/ServiceController.pdb
